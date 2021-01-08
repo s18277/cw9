@@ -301,7 +301,12 @@ namespace LinqConsoleApp
         public static void Przyklad10() { }
 
         //Znajdź pracownika z najwyższą pensją wykorzystując metodę Aggregate()
-        public static void Przyklad11() { }
+        public static void Przyklad11()
+        {
+            var empWithMaxSalary = Emps.Aggregate((current, next) => current.Salary > next.Salary ? current : next);
+            Console.WriteLine();
+            Console.WriteLine($"Przyklad11: {empWithMaxSalary}");
+        }
 
         //Z pomocą języka LINQ i metody SelectMany wykonaj złączenie
         //typu CROSS JOIN
