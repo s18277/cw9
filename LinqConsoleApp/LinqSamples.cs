@@ -245,7 +245,16 @@ namespace LinqConsoleApp
         ///     INNER JOIN Depts ON Emps.Deptno=Depts.Deptno
         ///     Rezultat: Złączenie kolekcji Emps i Depts.
         /// </summary>
-        public static void Przyklad6() { }
+        public static void Przyklad6()
+        {
+            var empsDepts = Emps.Join(Depts, emp => emp.Deptno, dept => dept.Deptno, (emp, dept) => new
+            {
+                emp.Ename,
+                emp.Job,
+                dept.Dname
+            });
+            PrintTaskToConsole(empsDepts);
+        }
 
         /// <summary>
         ///     SELECT Job AS Praca, COUNT(1) LiczbaPracownikow FROM Emps GROUP BY Job;
