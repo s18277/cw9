@@ -211,7 +211,12 @@ namespace LinqConsoleApp
         /// <summary>
         ///     SELECT MAX(Salary) FROM Emps;
         /// </summary>
-        public static void Przyklad3() { }
+        public static void Przyklad3()
+        {
+            var maxSalary = Emps.Max(emp => emp.Salary);
+            Console.WriteLine();
+            Console.WriteLine($"Przyklad3: {maxSalary}");
+        }
 
         /// <summary>
         ///     SELECT * FROM Emps WHERE Salary=(SELECT MAX(Salary) FROM Emps);
