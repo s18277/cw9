@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace LinqConsoleApp
@@ -192,23 +193,8 @@ namespace LinqConsoleApp
         /// </summary>
         public static void Przyklad1()
         {
-            //var res = new List<Emp>();
-            //foreach(var emp in Emps)
-            //{
-            //    if (emp.Job == "Backend programmer") res.Add(emp);
-            //}
-
-            //1. Query syntax (SQL)
-            var res = from emp in Emps
-                where emp.Job == "Backend programmer"
-                select new
-                {
-                    Nazwisko = emp.Ename,
-                    Zawod = emp.Job
-                };
-
-
-            //2. Lambda and Extension methods
+            var emps = Emps.Where(emp => emp.Job == "Backend programmer");
+            PrintTaskToConsole(emps);
         }
 
         /// <summary>
@@ -268,5 +254,12 @@ namespace LinqConsoleApp
         //Z pomocą języka LINQ i metody SelectMany wykonaj złączenie
         //typu CROSS JOIN
         public static void Przyklad12() { }
+
+        private static void PrintTaskToConsole(IEnumerable<object> iEnumerable)
+        {
+            Console.WriteLine();
+            Console.WriteLine($"{new StackTrace().GetFrame(1)?.GetMethod()?.Name}:");
+            iEnumerable.ToList().ForEach(Console.WriteLine);
+        }
     }
 }

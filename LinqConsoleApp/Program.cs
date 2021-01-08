@@ -9,7 +9,8 @@ namespace LinqConsoleApp
         {
             Console.WriteLine("Emps:");
             LinqSamples.Emps.ToList().ForEach(Console.WriteLine);
-            Console.WriteLine("\nDepts:");
+            Console.WriteLine();
+            Console.WriteLine("Depts:");
             LinqSamples.Depts.ToList().ForEach(Console.WriteLine);
             LinqSamples.Przyklad1();
             LinqSamples.Przyklad2();
