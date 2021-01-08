@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LinqConsoleApp
 {
@@ -16,7 +14,7 @@ namespace LinqConsoleApp
 
         public override string ToString()
         {
-            return Ename + " (" + Empno + ")";
+            return $"{Empno}\t{Ename}\t{Job}\t{Salary}\t{HireDate}\t{Deptno}\t{Mgr?.Empno}";
         }
     }
 }
