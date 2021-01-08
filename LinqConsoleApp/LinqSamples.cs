@@ -259,7 +259,15 @@ namespace LinqConsoleApp
         /// <summary>
         ///     SELECT Job AS Praca, COUNT(1) LiczbaPracownikow FROM Emps GROUP BY Job;
         /// </summary>
-        public static void Przyklad7() { }
+        public static void Przyklad7()
+        {
+            var emps = Emps.GroupBy(emp => emp.Job).Select(group => new
+            {
+                Praca = group.Key,
+                LiczbaPracownikow = group.ToList().Count
+            });
+            PrintTaskToConsole(emps);
+        }
 
         /// <summary>
         ///     Zwróć wartość "true" jeśli choć jeden
