@@ -230,7 +230,15 @@ namespace LinqConsoleApp
         /// <summary>
         ///     SELECT ename AS Nazwisko, job AS Praca FROM Emps;
         /// </summary>
-        public static void Przyklad5() { }
+        public static void Przyklad5()
+        {
+            var emps = Emps.Select(emp => new
+            {
+                Nazwisko = emp.Ename,
+                Praca = emp.Job
+            });
+            PrintTaskToConsole(emps);
+        }
 
         /// <summary>
         ///     SELECT Emps.Ename, Emps.Job, Depts.Dname FROM Emps
