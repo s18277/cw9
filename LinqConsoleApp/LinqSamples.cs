@@ -273,7 +273,12 @@ namespace LinqConsoleApp
         ///     Zwróć wartość "true" jeśli choć jeden
         ///     z elementów kolekcji pracuje jako "Backend programmer".
         /// </summary>
-        public static void Przyklad8() { }
+        public static void Przyklad8()
+        {
+            var atLeastSingleBackendProgrammer = Emps.Any(emp => emp.Job == "Backend programmer");
+            Console.WriteLine();
+            Console.WriteLine($"Przyklad8: {atLeastSingleBackendProgrammer}");
+        }
 
         /// <summary>
         ///     SELECT TOP 1 * FROM Emp WHERE Job="Frontend programmer"
