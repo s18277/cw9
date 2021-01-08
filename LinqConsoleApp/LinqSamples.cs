@@ -221,7 +221,11 @@ namespace LinqConsoleApp
         /// <summary>
         ///     SELECT * FROM Emps WHERE Salary=(SELECT MAX(Salary) FROM Emps);
         /// </summary>
-        public static void Przyklad4() { }
+        public static void Przyklad4()
+        {
+            var emps = Emps.Where(emp => emp.Salary == Emps.Max(empl => empl.Salary));
+            PrintTaskToConsole(emps);
+        }
 
         /// <summary>
         ///     SELECT ename AS Nazwisko, job AS Praca FROM Emps;
