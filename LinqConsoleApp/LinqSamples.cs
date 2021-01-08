@@ -298,7 +298,18 @@ namespace LinqConsoleApp
         ///     UNION
         ///     SELECT "Brak wartości", null, null;
         /// </summary>
-        public static void Przyklad10() { }
+        public static void Przyklad10()
+        {
+            // Argument przekazywany jako parametr do metody Union można uprościć jako:
+            //   new object[] {new {Ename = "Brak wartości", Job = (string) null, HireDate = (DateTime?) null}}
+            // Zdecydowałem się jednak wykorzystać daną konstrukcję gdyż bardiej przypomina konstrukcję z SQL:
+            //   SELECT "Brak wartości", null, null
+            var empsUnion = Emps
+                .Select(emp => new {emp.Ename, emp.Job, emp.HireDate})
+                .Union(new List<int>(1) {1}.Select(i => new
+                    {Ename = "Brak wartości", Job = (string) null, HireDate = (DateTime?) null}));
+            PrintTaskToConsole(empsUnion);
+        }
 
         //Znajdź pracownika z najwyższą pensją wykorzystując metodę Aggregate()
         public static void Przyklad11()
