@@ -200,7 +200,13 @@ namespace LinqConsoleApp
         /// <summary>
         ///     SELECT * FROM Emps Job = "Frontend programmer" AND Salary>1000 ORDER BY Ename DESC;
         /// </summary>
-        public static void Przyklad2() { }
+        public static void Przyklad2()
+        {
+            var emps = Emps
+                .Where(emp => emp.Job == "Frontend programmer" && emp.Salary > 1000)
+                .OrderByDescending(emp => emp.Ename);
+            PrintTaskToConsole(emps);
+        }
 
         /// <summary>
         ///     SELECT MAX(Salary) FROM Emps;
