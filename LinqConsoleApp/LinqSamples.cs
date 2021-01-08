@@ -310,7 +310,17 @@ namespace LinqConsoleApp
 
         //Z pomocą języka LINQ i metody SelectMany wykonaj złączenie
         //typu CROSS JOIN
-        public static void Przyklad12() { }
+        public static void Przyklad12()
+        {
+            var empsDepts = Emps.SelectMany(emp => Depts, (emp, dept) => new
+            {
+                EmpDeptno = emp.Deptno,
+                EmpEname = emp.Ename,
+                DeptDeptno = dept.Deptno,
+                DeptDname = dept.Dname
+            });
+            PrintTaskToConsole(empsDepts);
+        }
 
         private static void PrintTaskToConsole(IEnumerable<object> iEnumerable)
         {
