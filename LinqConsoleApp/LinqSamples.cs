@@ -284,7 +284,14 @@ namespace LinqConsoleApp
         ///     SELECT TOP 1 * FROM Emp WHERE Job="Frontend programmer"
         ///     ORDER BY HireDate DESC;
         /// </summary>
-        public static void Przyklad9() { }
+        public static void Przyklad9()
+        {
+            var emps = Emps
+                .Where(emp => emp.Job == "Frontend programmer")
+                .OrderByDescending(emp => emp.HireDate)
+                .Take(1);
+            PrintTaskToConsole(emps);
+        }
 
         /// <summary>
         ///     SELECT Ename, Job, Hiredate FROM Emps
